@@ -71,7 +71,7 @@ const Navbar = () => {
                     </SearchContainer>
 
                 </Left>
-                <Center><Logo>PPHIT.</Logo></Center>
+                <Center><Logo>PPashion</Logo></Center>
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>

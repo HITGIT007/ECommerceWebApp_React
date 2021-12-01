@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {ArrowLeftOutlined, ArrowRightOutlined} from '@material-ui/icons';
+import {sliderItems} from '../data';
 
 const Container = styled.div`
     width: 100%;
@@ -25,18 +26,22 @@ const Arrow = styled.div`
     right: ${props=>props.direction === "right" && "10px"};
     margin: auto;
     cursor: pointer;
-    
+    z-index: 2;
 `
 const Wrapper = styled.div`
     height: 100%;
     background-color: #FAFAAE;
     display: flex;
+    transition: all 1s ease;
+    transform: translateX(${props=>props.slideIndex * -100}vw); 
+    
 `
 const Slide = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
+    background-color: #${props => props.bg};
     
 `
 const ImgContainer = styled.div`
@@ -70,49 +75,42 @@ const Button = styled.button`
 
 
 const Slider = () => {
+
+      const [slideIndex, setSlideIndex] = useState(0);
+       const handleClick = (direction) => {
+
+        if(direction ==="left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex-1: 2);
+        }else {
+            setSlideIndex(slideIndex < 2 ? slideIndex+1: 0);
+        }
+
+       };
     return (
         <Container>
-            <Arrow direction="left">
+            <Arrow direction="left" onClick = {()=>handleClick("left")}>
                 <ArrowLeftOutlined/>
 
             </Arrow>
-            <Wrapper>
-                <Slide>
-                    <ImgContainer>
-                        <Image src="https://img.faballey.com/images/Product/DRS03586Z/3.jpg" />
-                    </ImgContainer>
-                    <InfoContainer>
-                    <Title>SUMMER SALE</Title>
-                    <Desc>DON'T COMPROMISE ON STYLES! GET FLAT 30% 0FF FOR NEW ARRIVALS</Desc>
-                    <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
+            <Wrapper slideIndex= {slideIndex}>
 
-                <Slide>
-                    <ImgContainer>
-                        <Image src="https://img.faballey.com/images/Product/DRS03586Z/3.jpg" />
-                    </ImgContainer>
-                    <InfoContainer>
-                    <Title>FLASH SALE</Title>
-                    <Desc>DON'T COMPROMISE ON STYLES! GET FLAT 30% 0FF FOR NEW ARRIVALS</Desc>
-                    <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
+                {sliderItems.map(item =>(
 
-                <Slide>
+                    <Slide bg = {item.bg}>
                     <ImgContainer>
-                        <Image src="https://img.faballey.com/images/Product/DRS03586Z/3.jpg" />
+                        <Image src={item.img} />
                     </ImgContainer>
                     <InfoContainer>
-                    <Title>CLEARANCE SALE</Title>
-                    <Desc>DON'T COMPROMISE ON STYLES! GET FLAT 30% 0FF FOR NEW ARRIVALS</Desc>
-                    <Button>SHOP NOW</Button>
+                    <Title>{item.title}</Title>
+                    <Desc>{item.desc}</Desc>
+                    <Button><b>SHOP NOW</b></Button>
                     </InfoContainer>
-                </Slide>
-                
+                    </Slide>
+
+                ) )}
 
             </Wrapper>
-            <Arrow direction="right">
+            <Arrow direction="right" onClick = {()=>handleClick("right")}>
                 <ArrowRightOutlined/>
 
             </Arrow>
