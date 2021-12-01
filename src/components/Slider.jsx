@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {ArrowLeftOutlined, ArrowRightOutlined} from '@material-ui/icons';
 import {sliderItems} from '../data';
+import { mobile } from "../responsive";
 
 const Container = styled.div`
     width: 100%;
@@ -10,6 +11,7 @@ const Container = styled.div`
     background-color: #FAFAAE;
     position: relative;
     overflow: hidden;
+    ${mobile({ display: "none" })}
 `
 const Arrow = styled.div`
     width: 50px;
@@ -68,7 +70,7 @@ const Desc = styled.p`
 const Button = styled.button`
     padding: 10px;
     font-size; 20px;
-    background-color: #F67A30;
+    background-color: #FCF2A3;
     cursor: pointer;
 `
 

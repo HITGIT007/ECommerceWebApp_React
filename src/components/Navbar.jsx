@@ -7,25 +7,31 @@ import {Badge} from '@material-ui/core';
 
 //First install styled components using npm add styled-components
 import styled from 'styled-components'
+import { mobile } from "../responsive";
 
 //Styled Component
 const Container = styled.div`
     height: 60px;
     background-color: #F0E68C;
+    ${mobile({ height: "50px" })}
 `
 const Wrapper = styled.div`
-    padding:10px 20px;
+    padding: 10px 20px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    ${mobile({ padding: "10px 0px" })}
 `
 const Left = styled.div`
     flex:1;
     display: flex;
+    align-items: center;
 `
 const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
     align-items: center;
+    ${mobile({ display: "none" })}
 `
 
 const SearchContainer = styled.div`
@@ -36,6 +42,7 @@ const SearchContainer = styled.div`
 `
 const Input = styled.input`
     border: none;
+    ${mobile({ width: "50px" })}
 `
 
 const Center = styled.div`
@@ -44,18 +51,22 @@ const Center = styled.div`
 `
 const Logo = styled.div`
     font-weight: bold;
+    ${mobile({ fontSize: "24px" })}
 `
 
 const Right = styled.div`
     flex:1;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
+    ${mobile({ flex: 2, justifyContent: "center" })}
 `//End of flex Box
 
 const MenuItem = styled.div`
     font-size: 14px;
     cursor: pointer;
     margin-left: 25px;
+    ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `
 
 
@@ -71,7 +82,7 @@ const Navbar = () => {
                     </SearchContainer>
 
                 </Left>
-                <Center><Logo>PPashion</Logo></Center>
+                <Center><Logo>PPazon</Logo></Center>
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
