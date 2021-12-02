@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom';
 //First install material UI
 import {Search, ShoppingCartOutlined} from '@material-ui/icons';
 import {Badge} from '@material-ui/core';
@@ -82,14 +82,15 @@ const Navbar = () => {
                     </SearchContainer>
 
                 </Left>
-                <Center><Logo>PPazon</Logo></Center>
+                <Center><Logo><Link to="/">PPazon</Link> </Logo></Center>
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
+                    <MenuItem><Link to="/register">REGISTER</Link></MenuItem>
+                    <MenuItem><Link to="/login">SIGN IN</Link></MenuItem>
                     <MenuItem>
-                        <Badge badgeContent={4} color="primary">
+                    <Link to="/cart"><Badge badgeContent={4} color="primary">
                             <ShoppingCartOutlined />
-                        </Badge>
+                        </Badge></Link>
+                        
                     </MenuItem>
                 </Right>
             </Wrapper>

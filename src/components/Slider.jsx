@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {ArrowLeftOutlined, ArrowRightOutlined} from '@material-ui/icons';
 import {sliderItems} from '../data';
 import { mobile } from "../responsive";
+import {Link} from 'react-router-dom';
 
 const Container = styled.div`
     width: 100%;
@@ -105,7 +106,7 @@ const Slider = () => {
                     <InfoContainer>
                     <Title>{item.title}</Title>
                     <Desc>{item.desc}</Desc>
-                    <Button><b>SHOP NOW</b></Button>
+                    <Link to="/productlist"><Button><b>SHOP NOW</b></Button></Link>
                     </InfoContainer>
                     </Slide>
 
